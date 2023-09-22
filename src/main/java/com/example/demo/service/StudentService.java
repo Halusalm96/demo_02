@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -33,14 +34,16 @@ public class StudentService {
     }
 
     public StudentDTO findById(Long id) {
-        Optional<StudentEntity> studentRepositoryById = studentRepository.findById(id);
-        if(studentRepositoryById.isPresent()) {
-            // 있다
-            StudentEntity studentEntity = studentRepositoryById.get();
-            return StudentDTO.studentDTOList(studentEntity);
-        }else {
-            // 없다
-            return null;
-        }
+//        Optional<StudentEntity> studentRepositoryById = studentRepository.findById(id);
+//        if(studentRepositoryById.isPresent()) {
+//            // 있다
+//            StudentEntity studentEntity = studentRepositoryById.get();
+//            return StudentDTO.studentDTOList(studentEntity);
+//        }else {
+//            // 없다
+//            return null;
+//        }
+        StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
+        return StudentDTO.studentDTOList(studentEntity);
     }
 }
