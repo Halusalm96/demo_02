@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Setter(AccessLevel.PACKAGE)
+@Setter(AccessLevel.PRIVATE)
 @Getter
 @Table(name = "student_table")
 public class StudentEntity {
