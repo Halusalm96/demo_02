@@ -1,14 +1,8 @@
 package com.example.demo.repository;
 
-import com.example.demo.dto.StudentDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.example.demo.entity.StudentEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class StudentRepository {
+public interface StudentRepository extends JpaRepository<StudentEntity,Long> {
 
-//    @Autowired
-
-    public void save(StudentDTO studentDTO) {
-    }
 }
