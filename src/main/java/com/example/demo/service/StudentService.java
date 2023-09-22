@@ -46,4 +46,13 @@ public class StudentService {
         StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
         return StudentDTO.studentDTOList(studentEntity);
     }
+
+    public void update(StudentDTO studentDTO) {
+        StudentEntity studentEntity = StudentEntity.toUpdateEntity(studentDTO);
+        studentRepository.save(studentEntity);
+    }
+
+    public void delete(Long id) {
+        studentRepository.deleteById(id);
+    }
 }

@@ -13,6 +13,7 @@
         <th>학과</th>
         <th>전화번호</th>
         <th>조회</th>
+        <th>삭제</th>
     </tr>
     <tr th:each="student: ${studentList}">
         <td>
@@ -25,6 +26,12 @@
         <td>
             <button th:onclick="detail([[${student.id}]])">조회</button>
         </td>
+        <td>
+            <button th:onclick="update_fn([[${student.id}]])">수정</button>
+        </td>
+        <td>
+            <button th:onclick="delete_fn([[${student.id}]])">삭제</button>
+        </td>
     </tr>
 </table>
 </body>
@@ -32,6 +39,12 @@
     const detail = (id) => {
         location.href = `/student/${id}`;
         // location.href = "/student/" + id;
+    }
+    const update_fn = (id) => {
+        location.href = `/student/update/${id}`;
+    }
+    const delete_fn = (id) => {
+        location.href = `/student/delete/${id}`;
     }
 </script>
 </html>
